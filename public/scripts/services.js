@@ -1,6 +1,7 @@
 "use strict";
 angular.module('taskTool')
-    .constant('BASE_URL', 'http://localhost:3000/')
+    // .constant('BASE_URL', 'http://localhost:3000/')
+    .constant('BASE_URL', 'https://polar-depths-19089.herokuapp.com/')
     .factory('$localStorage', ['$window',
         function ($window) {
             return {
