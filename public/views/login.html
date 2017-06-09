@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <form ng-init="loginMode=true" name="userForm" novalidate>
+                <div class="form-group row" ng-class="{'has-error has-feedback':!userForm.username.$pristine && userForm.username.$error.required}">
+                    <label class="col-sm-4" style="padding-top:10px">Username</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="username" name="username" type="text" placeholder="Username" ng-model="user.username" required>
+                        <span class="help-block" ng-show="!userForm.username.$pristine&&userForm.username.$error.required">Please enter a username</span>
+                    </div>
+                </div>
+                <div class="form-group row" ng-class="{'has-error has-feedback':(!userForm.pass.$pristine && userForm.pass.$error.required)}">
+                    <label class="col-sm-4" style="padding-top:10px">Password</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" name="pass" id="pass" type="password" placeholder="Password" ng-model="user.password" required>
+                        <span class="help-block" ng-show="(!userForm.pass.$pristine && userForm.pass.$error.required)">Please enter a password</span>
+                    </div>
+                </div>
+                <div ng-if="!loginMode" class="form-group row" ng-class="{'has-error has-feedback': (!userForm.pass.$pristine&&!userForm.confirmPass.$pristine && user.password!=user.cpassword) || (!userForm.confirmPass.$pristine && userForm.confirmPass.$error.required)}">
+                    <label class="col-sm-4" style="padding-top:10px">Confirm Password</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" name="confirmPass" id="confirmPass" type="password" placeholder="Confirm Password" ng-model="user.cpassword"
+                            required>
+                        <span ng-show="(!userForm.pass.$pristine&&!userForm.confirmPass.$pristine && user.password!=user.cpassword) || (!userForm.confirmPass.$pristine
+                        && userForm.confirmPass.$error.required)" class="help-block" aria-hidden="true">Passwords Dont Match!</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label style="padding-top:10px">{{loginMode?'New User?':'Already Registered?'}} <a class="btn btn-link" ng-click="loginMode=!loginMode">{{loginMode?'Register':'Log In'}}</a></label>
+                    <button ng-if="loginMode" type="button" class="btn btn-default pull-right"
+                        ng-click="login()">Log In</button>
+                    <button ng-if="!loginMode"
+                        type="button" class="btn btn-default pull-right" ng-click="register()">Register</button>
+                </div>
+            </form>
+            <div class="alert alert-success alert-dismissible" role="alert" ng-if="regSuccess">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>                <strong>Registered Successfully!</strong> Please Log In to continue.
+            </div>
+            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="regFail">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>                <strong>Registeration Failed!</strong> {{reason}} Please try again.
+            </div>
+            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="loginFail">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>                <strong>Login Failed!</strong> Please check your username or password.
+            </div>
+        </div>
+        <div class="col-sm-3">
+        </div>
+    </div>
+</div>

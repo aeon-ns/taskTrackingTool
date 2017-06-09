@@ -1,0 +1,30 @@
+body {
+  padding: 50px;
+  font: 14px "Times New Roman", Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.task {
+  border: 1px black solid;
+  border-radius: 15px;
+  margin: 10px;
+  padding: 8px;
+  text-align:left;
+}
+
+.custbtn {
+  width: 35%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.custtext {
+  font-size: 15px;
+}

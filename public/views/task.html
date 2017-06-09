@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <br>
+            <br>
+            <form name="taskForm">
+                <div class="form-group row" ng-class="{'has-error has-feedback': !taskForm.title.$pristine && taskForm.title.$error.required}">
+                    <label class="col-sm-3">Title</label>
+                    <div class="col-sm-9">
+                        <input name="title" id="title" ng-model="task.title" class="form-control" type="text" placeholder="Title" aria-placeholder="Title"
+                            required>
+                        <span class="help-block" ng-show="!taskForm.title.$pristine && taskForm.title.$error.required">Required</span>
+                    </div>
+                </div>
+                <div class="form-group row" ng-class="{'has-error has-feedback': !taskForm.description.$pristine && taskForm.description.$error.required}">
+                    <label class="col-sm-3">Description</label>
+                    <div class="col-sm-9">
+                        <textarea name="description" id="description" ng-model="task.description" class="form-control" placeholder="Description"
+                            aria-placeholder="Description" rows="10" required></textarea>
+                        <span class="help-block" ng-show="!taskForm.description.$pristine && taskForm.description.$error.required">Required</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3">Deadline</label>
+                    <div class="col-sm-9">
+                        <!--Deadline datepicker-->
+                        <input type="date" ng-model="task.deadline" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3">Task Type</label>
+                    <div class="col-sm-9">
+                        <select ng-model="task.private">
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default pull-right" ng-disabled="taskForm.$invalid" ng-click="submit()">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-default pull-right" ui-sref="home">Back to Home</button> <br>
+            <button class="btn btn-default pull-right" ng-click="logout()">Log out</button>
+        </div>
+    </div>
+</div>

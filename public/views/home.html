@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row" ng-init="public=false">
+        <div ng-if="!err" class="col-md-8 col-md-offset-2" style="text-align:center">
+            <button ng-if="!public" class="custbtn pull-left" ng-click="showPublic()"><strong>View public tasks</strong></button>
+            <button ng-if="public" class="custbtn pull-left" ng-click="showMyTasks()"><strong>View my tasks</strong></button>
+            <button class="custbtn pull-right" ui-sref="newTask"><strong>Post a task</strong></button>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p style="font-size:20px">
+                <strong><u>{{public?'Public Tasks':'My Tasks'}}</u></strong> 
+            </p>
+            <br>
+            <br>
+            <p ng-if="!tasks.length">No tasks found.</p>
+            <ul ng-if="tasks.length" class="list-unstyled">
+                <li class="task" ng-repeat="task in tasks">
+                    <div class="row">
+                        <div class="col-sm-9 custtext">
+                            <p>Title: {{task.title}}</p>
+                            <p>Deadline: {{task.deadline | date}}</p>
+                        </div>
+                        <div class="col-sm-3 custtext">
+                            <p><i>Posted {{task.createdAt | timeElapsed}}</i></p>
+                            <p>{{task.private?'Private Task':'Public Task'}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 custtext">
+                            <p>Description: {{task.description}}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div ng-if="!err" class="col-md-2">
+            <button class="btn btn-default pull-right" ng-click="logout()">Log out</button>
+        </div>
+    </div>
+    <p ng-if="err">{{msg}}</p>
+</div>

@@ -1,0 +1,22 @@
+{
+    "name": "tasktool",
+    "authors": [
+        "Nisheet Sharma <nisheet.sharma@live.in>"
+    ],
+    "description": "Task Tool",
+    "main": "index.html",
+    "license": "",
+    "homepage": "index.html",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components"
+    ],
+    "dependencies": {
+        "angular-resource": "^1.6.4",
+        "angular-ui-router": "^1.0.3",
+        "angular-animate": "^1.6.4",
+        "angular-touch": "^1.6.4",
+        "angular": "^1.6.4"
+    }
+}
